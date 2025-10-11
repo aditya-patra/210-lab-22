@@ -125,7 +125,7 @@ public:
                     prev->next = temp->next;
                 }
                 delete temp;
-                cout << "Index " << pos << " has been removed" << endl;
+                cout << "Index " << (pos-1) << " has been removed" << endl;
             }
         }
     }
@@ -159,7 +159,7 @@ public:
             cout << current->data << " ";
             current = current->next;
         }
-        cout << endl;
+        cout << endl << endl;
     }
 
     void print_reverse() {
@@ -169,7 +169,7 @@ public:
             cout << current->data << " ";
             current = current->prev;
         }
-        cout << endl;
+        cout << endl << endl;
     }
 
     ~DoublyLinkedList() {
@@ -193,6 +193,26 @@ int main() {
 
     cout << "List backward: ";
     list.print_reverse();
+
+    cout << "Remove 4th value" << endl;
+    list.delete_pos(3);
+    list.print();
+
+    cout << "Remove head using pos" << endl;
+    list.delete_pos(0);
+    list.print();
+
+    cout << "Remove out of bounds value" << endl;
+    list.delete_pos(500);
+    list.print();
+
+    cout << "Remove head" << endl;
+    list.pop_front();
+    list.print();
+
+    cout << "Remove tail" << endl;
+    list.pop_back();
+    list.print();
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
