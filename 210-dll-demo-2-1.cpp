@@ -76,7 +76,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_val(int value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
@@ -98,6 +98,34 @@ public:
         }
 
         delete temp;
+    }
+
+    // delete_pos deletes a node based on a position from the front of the list
+    void delete_pos(int pos) {
+        int iter = pos;
+        if(!head) return;
+        Node* temp = head;
+        if (pos == 0) {
+            head = temp->next;
+            delete temp;
+        }
+        else {
+            Node* prev = temp;
+            while(temp) {
+                prev = temp;
+                temp = temp->next;
+                iter -= 1;
+                if (iter == 0) break;
+            }
+            if (iter > 0) {
+                cout << "Invalid index" << endl;
+            }
+            else {
+                prev->next = temp->next;
+                delete temp;
+                cout << "Index " << pos << " has been removed" << endl;
+            }
+        }
     }
 
     void print() {
