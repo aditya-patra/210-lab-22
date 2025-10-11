@@ -121,7 +121,9 @@ public:
                 cout << "Invalid index" << endl;
             }
             else {
-                prev->next = temp->next;
+                if(temp->next) {
+                    prev->next = temp->next;
+                }
                 delete temp;
                 cout << "Index " << pos << " has been removed" << endl;
             }
