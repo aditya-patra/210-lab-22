@@ -111,7 +111,7 @@ public:
         }
         else {
             Node* prev = temp;
-            while(temp) {
+            while(temp->next) {
                 prev = temp;
                 temp = temp->next;
                 iter -= 1;
@@ -128,6 +128,28 @@ public:
                 cout << "Index " << pos << " has been removed" << endl;
             }
         }
+    }
+
+    // pop front removes the first node if it exists
+    void pop_front() {
+        if (!head) return;
+        cout << "Deleted head" << endl;
+        Node* temp = head;
+        head = temp->next;
+        delete temp;
+    }
+
+    void pop_back() {
+        if (!head) return;
+        cout << "Deleted tail" << endl;
+        Node* temp = head;
+        Node* prev = temp;
+        while(temp->next) {
+            prev = temp;
+            temp = temp->next;
+        }
+        delete temp;
+        prev->next = nullptr;
     }
 
     void print() {
